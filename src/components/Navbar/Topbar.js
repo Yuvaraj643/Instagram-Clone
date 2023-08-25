@@ -195,6 +195,7 @@ export default function Topbar() {
                       type="email"
                       label="Description"
                       onChange={(e) => setBody(e.target.value)}
+                      className="my-4"
                     />
                   </CardBody>
                   <Divider />
