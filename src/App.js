@@ -1,4 +1,10 @@
-import React, { useState, useEffect, createContext, useReducer, useContext } from "react";
+import React, {
+  useState,
+  useEffect,
+  createContext,
+  useReducer,
+  useContext,
+} from "react";
 import Topbar from "./components/Navbar/Topbar";
 import "./App.css";
 import { BrowserRouter, Routes, Route, useNavigate } from "react-router-dom";
@@ -8,7 +14,7 @@ import Signup from "./components/Pages/Signup";
 import Profile from "./components/Pages/Profile";
 import Loader from "./components/Loader/Loader";
 import { reducer, initialState } from "./reducers/userReducer";
-
+import NotFound from "./components/404/NotFound";
 
 export const UserContext = createContext();
 const Routing = () => {
@@ -32,16 +38,19 @@ const Routing = () => {
   }, []);
   return (
     <>
-    {loading ? (
-      <Loader />
-    ) : (
-    <Routes>
-      <Route path="/" element={loading ? <Loader /> : <Home />} />
-      <Route path="/login" element={<Login />} />
-      <Route path="/signup" element={<Signup />} />
-      <Route path="/profile" element={<Profile />} />
-    </Routes>
-    )}
+      <div>
+        {loading ? (
+          <Loader />
+        ) : (
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/signup" element={<Signup />} />
+            <Route path="/profile" element={<Profile />} />
+            <Route path="*" element={<NotFound />} />
+          </Routes>
+        )}
+      </div>
     </>
   );
 };
