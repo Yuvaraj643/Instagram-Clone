@@ -103,7 +103,7 @@ export default function Signup() {
                 <Input
                   type="text"
                   variant={"bordered"}
-                  label="Name"
+                  label="Username"
                   value={name}
                   onChange={(e) => setName(e.target.value)}
                 />
