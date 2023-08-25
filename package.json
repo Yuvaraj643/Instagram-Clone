@@ -2,7 +2,6 @@
   "name": "client",
   "version": "0.1.0",
   "private": true,
-  "proxy": "https://instagram-83t5.onrender.com",
   "dependencies": {
     "@expo/vector-icons": "^13.0.0",
     "@nextui-org/react": "^2.1.1",

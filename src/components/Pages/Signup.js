@@ -29,7 +29,7 @@ export default function Signup() {
       toast.error("Invalid Email");
       return;
     }
-    fetch("/signup", {
+    fetch("https://instagram-83t5.onrender.com/signup", {
       method: "post",
       headers: {
         "Content-Type": "application/json",

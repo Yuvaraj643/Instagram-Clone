@@ -26,7 +26,7 @@ export default function Login() {
       toast.error("Invalid Email");
       return;
     }
-    fetch("/signin", {
+    fetch("https://instagram-83t5.onrender.com/signin", {
       method: "post",
       headers: {
         "Content-Type": "application/json",
@@ -51,7 +51,7 @@ export default function Login() {
         }
       })
       .catch((err) => {
-        console.log(err);
+        toast.error(err);
       });
   };
   return (

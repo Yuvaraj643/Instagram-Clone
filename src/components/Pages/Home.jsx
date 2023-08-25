@@ -17,7 +17,7 @@ export default function Home() {
   const { state, dispatch } = useContext(UserContext);
 
   useEffect(() => {
-    fetch("/all-posts", {
+    fetch("https://instagram-83t5.onrender.com/all-posts", {
       headers: {
         Authorization: "Bearer " + localStorage.getItem("jwt"),
       },
@@ -30,7 +30,7 @@ export default function Home() {
   }, []);
 
   const likePost = (id) => {
-    fetch("/like", {
+    fetch("https://instagram-83t5.onrender.com/like", {
       method: "put",
       headers: {
         "Content-Type": "application/json",
@@ -58,7 +58,7 @@ export default function Home() {
   };
 
   const unlikePost = (id) => {
-    fetch("/unlike", {
+    fetch("https://instagram-83t5.onrender.com/unlike", {
       method: "put",
       headers: {
         "Content-Type": "application/json",

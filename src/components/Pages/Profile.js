@@ -17,7 +17,7 @@ export default function Profile() {
   const { state, dispatch } = useContext(UserContext);
   // console.log(state)
   useEffect(() => {
-    fetch("/my-posts", {
+    fetch("https://instagram-83t5.onrender.com/my-posts", {
       headers: {
         Authorization: "Bearer " + localStorage.getItem("jwt"),
       },
