@@ -88,7 +88,7 @@ export default function Topbar() {
   const [url, setUrl] = useState("");
   useEffect(() => {
     if (url) {
-      fetch("/create-post", {
+      fetch("https://instagram-83t5.onrender.com/create-post", {
         method: "post",
         headers: {
           "Content-Type": "application/json",
@@ -138,7 +138,7 @@ export default function Topbar() {
       <Navbar disableAnimation isBordered>
         <NavbarContent className="sm:hidden pr-3" justify="center">
           <NavbarBrand>
-            <Link to={state?"/":"/login"}>
+            <Link to={state?"/":"https://instagram-83t5.onrender.com/login"}>
               <img src={logo} alt="logo" width="150px" />
             </Link>
           </NavbarBrand>
