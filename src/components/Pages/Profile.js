@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useContext } from "react";
-import {UserContext} from "../../App"
+import { UserContext } from "../../App";
 import {
   Card,
   CardBody,
@@ -11,9 +11,9 @@ import { Avatar } from "@nextui-org/react";
 import { Button } from "@nextui-org/react";
 import settings from "./assets/settings.png";
 
-
 export default function Profile() {
   const [myposts, setMyPosts] = useState([]);
+  const [totalPosts, settotalPosts] = useState([]);
   const { state, dispatch } = useContext(UserContext);
   // console.log(state)
   useEffect(() => {
@@ -21,9 +21,11 @@ export default function Profile() {
       headers: {
         Authorization: "Bearer " + localStorage.getItem("jwt"),
       },
-    }).then(res => res.json())
+    })
+      .then((res) => res.json())
       .then((result) => {
         setMyPosts(result.myposts);
+        settotalPosts(result.myposts.length);
       })
       .catch((error) => {
         console.error("Error fetching data:", error);
@@ -41,14 +43,16 @@ export default function Profile() {
             />
           </div>
           <div className=" flex flex-col justify-center text-center sm:text-left ">
-            <h2 className="text-2xl text-center my-2">{state ? state.name : ""}</h2>
+            <h2 className="text-2xl text-center my-2">
+              {state ? state.name : ""}
+            </h2>
             <div className="mx-auto flex align-center justify-between">
               <Button color="primary">Edit Profile</Button>&nbsp;&nbsp;
               <img src={settings} alt="settings" className="h-8" />
             </div>
             <div className="flex gap-8 pl-4 font-semibold my-4">
               <div className="flex flex-col text-center">
-                <span>100</span>
+                <span>{totalPosts}</span>
                 <p className="text-base">Posts</p>
               </div>
               <div className="flex flex-col text-center">
@@ -66,7 +70,7 @@ export default function Profile() {
       </section>
       <section className="lg:w-full lg:flex-row lg:justify-center">
         <div className="max-w-[900px] gap-2 grid grid-cols-12 grid-rows-2 px-8 mx-auto">
-          {myposts.map((item => {
+          {myposts.map((item) => {
             return (
               <Card className="col-span-12 sm:col-span-4 h-[300px]">
                 {/* <CardHeader className="absolute z-10 top-1 flex-col !items-start">
@@ -85,7 +89,7 @@ export default function Profile() {
                 />
               </Card>
             );
-          }))}
+          })}
         </div>
       </section>
     </>
