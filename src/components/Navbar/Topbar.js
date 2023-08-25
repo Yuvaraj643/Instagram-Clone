@@ -41,7 +41,7 @@ export default function Topbar() {
     if (state) {
       return [
         <NavbarItem>
-          <Button onPress={onOpen}>
+          <Button isIconOnly onClick={onOpen} variant="faded">
             <BsFillPlusSquareFill className="w-6 h-6" />
           </Button>
         </NavbarItem>,
@@ -51,13 +51,12 @@ export default function Topbar() {
           </Button>
         </NavbarItem>,
          <NavbarItem>
-         <Button  color="danger" variant="flat"
+         <Button  color="danger"
          onClick={
            () => {
              localStorage.clear();
              dispatch({type:"CLEAR"})
              navigate("/login");
-             
            }
          }>
            Logout
@@ -67,12 +66,12 @@ export default function Topbar() {
     } else {
       return [
         <NavbarItem>
-          <Button as={Link} to="/login" color="warning" variant="flat">
+          <Button as={Link} to="/login" color="primary" variant="ghost">
             Sign In
           </Button>
         </NavbarItem>,
         <NavbarItem>
-          <Button as={Link} to="/signup" color="warning" variant="flat">
+          <Button as={Link} to="/signup" color="primary" variant="ghost">
             Sign Up
           </Button>
         </NavbarItem>,
