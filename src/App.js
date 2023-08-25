@@ -13,7 +13,7 @@ import { reducer, initialState } from "./reducers/userReducer";
 export const UserContext = createContext();
 const Routing = () => {
   const navigate = useNavigate();
-  const [isLoading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(true);
   const { state, dispatch } = useContext(UserContext);
 
   useEffect(() => {
@@ -31,12 +31,18 @@ const Routing = () => {
     }
   }, []);
   return (
+    <>
+    {loading ? (
+      <Loader />
+    ) : (
     <Routes>
-      <Route path="/" element={isLoading ? <Loader /> : <Home />} />
+      <Route path="/" element={loading ? <Loader /> : <Home />} />
       <Route path="/login" element={<Login />} />
       <Route path="/signup" element={<Signup />} />
       <Route path="/profile" element={<Profile />} />
     </Routes>
+    )}
+    </>
   );
 };
 

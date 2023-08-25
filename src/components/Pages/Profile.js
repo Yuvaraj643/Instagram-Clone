@@ -10,11 +10,21 @@ import {
 import { Avatar } from "@nextui-org/react";
 import { Button } from "@nextui-org/react";
 import settings from "./assets/settings.png";
+import Loader from "../Loader/Loader";
 
 export default function Profile() {
   const [myposts, setMyPosts] = useState([]);
   const [totalPosts, settotalPosts] = useState([]);
   const { state, dispatch } = useContext(UserContext);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    setTimeout(() => {
+      setLoading(false);
+    }, 2000);
+  }, []);
+
+
   // console.log(state)
   useEffect(() => {
     fetch("https://instagram-83t5.onrender.com/my-posts", {
@@ -34,6 +44,10 @@ export default function Profile() {
 
   return (
     <>
+    {loading ? (
+        <Loader />
+      ) : (
+        <>
       <section className="w-1/2 mx-auto my-4">
         <div className="flex flex-col items-center justify-evenly sm:flex-row sm:items-start">
           <div className="mb-4 sm:mb-0">
@@ -92,6 +106,8 @@ export default function Profile() {
           })}
         </div>
       </section>
+      </>
+      )}
     </>
   );
 }

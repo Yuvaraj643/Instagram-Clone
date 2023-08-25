@@ -1,5 +1,5 @@
-import React, { useState,useContext } from "react";
-import {UserContext} from "../../App"
+import React, { useState, useContext, useEffect } from "react";
+import { UserContext } from "../../App";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import {
@@ -14,15 +14,26 @@ import {
 import { Input } from "@nextui-org/react";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-
+import Loader from "../Loader/Loader";
 
 export default function Login() {
-  const {state,dispatch} = useContext(UserContext);
+  const { state, dispatch } = useContext(UserContext);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
+  const [loading, setLoading] = useState(false);
+  useEffect(() => {
+    setTimeout(() => {
+      setLoading(false);
+    }, 1000);
+  })
+
   const PostData = () => {
-    if (!/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(email)){
+    if (
+      !/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(
+        email
+      )
+    ) {
       toast.error("Invalid Email");
       return;
     }
@@ -43,7 +54,7 @@ export default function Login() {
         } else {
           localStorage.setItem("jwt", data.token);
           localStorage.setItem("user", JSON.stringify(data.user));
-          dispatch({type:"USER",payload:data.user})
+          dispatch({ type: "USER", payload: data.user });
           toast.success("Successfully signed in");
           setTimeout(function () {
             navigate("/");
@@ -56,7 +67,11 @@ export default function Login() {
   };
   return (
     <>
-    <ToastContainer
+    {loading ? (
+        <Loader />
+      ) : (
+        <>
+      <ToastContainer
         position="top-right"
         autoClose={5000}
         hideProgressBar={false}
@@ -68,6 +83,7 @@ export default function Login() {
         pauseOnHover
         theme="colored"
       />
+
       <div className="flex justify-center items-center my-24">
         <Card className="min-w-[400px]">
           <CardHeader className="flex gap-3">
@@ -120,6 +136,8 @@ export default function Login() {
           </CardFooter>
         </Card>
       </div>
+      </>
+      )}  
     </>
   );
 }

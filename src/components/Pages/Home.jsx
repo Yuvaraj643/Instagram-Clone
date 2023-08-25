@@ -11,10 +11,18 @@ import {
   Button,
 } from "@nextui-org/react";
 import { HeartIcon } from "./HeartIcon";
+import Loader from "../Loader/Loader";
 export default function Home() {
   const [data, setData] = useState([]);
   const [liked, setLiked] = React.useState(false);
   const { state, dispatch } = useContext(UserContext);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    setTimeout(() => {
+      setLoading(false);
+    }, 1000);
+  }, []);
 
   useEffect(() => {
     fetch("https://instagram-83t5.onrender.com/all-posts", {
@@ -86,6 +94,9 @@ export default function Home() {
   };
   return (
     <>
+    {loading ? (
+        <Loader />
+      ) : (
       <section className="flex flex-col items-center py-8">
         {data.map((item) => {
           return (
@@ -116,11 +127,19 @@ export default function Home() {
               <hr></hr>
               <CardBody>
                 {item.likes.includes(state._id) ? (
-                  <i class="large material-icons cursor-pointer hover:text-red-700" style={{ color: "red" }} onClick={() => unlikePost(item._id)}>
+                  <i
+                    class="large material-icons cursor-pointer hover:text-red-700"
+                    style={{ color: "red" }}
+                    onClick={() => unlikePost(item._id)}
+                  >
                     favorite
                   </i>
                 ) : (
-                  <i class="large material-icons cursor-pointer hover:text-red-700" style={{ color: "red" }} onClick={() => likePost(item._id)}>
+                  <i
+                    class="large material-icons cursor-pointer hover:text-red-700"
+                    style={{ color: "red" }}
+                    onClick={() => likePost(item._id)}
+                  >
                     favorite_border
                   </i>
                 )}
@@ -130,6 +149,7 @@ export default function Home() {
           );
         })}
       </section>
+      )}
     </>
   );
 }
