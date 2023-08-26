@@ -48,7 +48,7 @@ export default function Profile() {
         <Loader />
       ) : (
         <>
-        <div className="h-screen">
+        <div className="h-full">
       <section className="w-1/2 mx-auto my-4">
         <div className="flex flex-col items-center justify-evenly sm:flex-row sm:items-start">
           <div className="mb-4 sm:mb-0">
