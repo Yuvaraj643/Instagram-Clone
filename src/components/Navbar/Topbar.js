@@ -38,6 +38,7 @@ import "react-toastify/dist/ReactToastify.css";
 import { useNavigate } from "react-router-dom";
 import { User } from "@nextui-org/react";
 import useDarkMode from "use-dark-mode";
+import {Avatar} from "@nextui-org/react";
 import "./topbar.css";
 
 export default function Topbar() {
@@ -57,7 +58,6 @@ export default function Topbar() {
     }
   };
 
-
   const renderList = () => {
     if (state) {
       return [
@@ -67,9 +67,15 @@ export default function Topbar() {
           </Button>
         </NavbarItem>,
         <NavbarItem>
-          <Button as={Link} to="/profile" color="success">
+          {/* <Button as={Link} to="/profile" color="success">
             Profile
-          </Button>
+          </Button> */}
+          <Link to="/profile">
+          <Avatar
+            src="https://i.pravatar.cc/150?u=a04258114e29026708c"
+            size="md"
+          />
+          </Link>
         </NavbarItem>,
         <NavbarItem>
           <Button
