@@ -162,7 +162,7 @@ export default function Topbar() {
   return (
     <>
       <Navbar disableAnimation isBordered>
-        <NavbarContent className="sm:hidden pr-3" justify="center">
+        <NavbarContent className="sm:hidden pr-1" justify="center">
           <NavbarBrand>
             <Link
               to={state ? "/" : "https://instagram-83t5.onrender.com/login"}
