@@ -72,9 +72,9 @@ const App = () => {
       <UserContext.Provider value={{ state, dispatch }}>
         <BrowserRouter>
           <main
-            className={`${
+            className= {`${
               darkMode.value ? "dark" : ""
-            } text-foreground bg-background`}
+            } text-foreground bg-background h-screen`}
           >
             <Topbar />
             {isLoading ? <Loader /> : <Routing />}

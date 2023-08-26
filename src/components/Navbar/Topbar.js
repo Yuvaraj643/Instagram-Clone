@@ -50,7 +50,6 @@ export default function Topbar() {
 
   const toggleDarkMode = () => {
     setIsDarkMode(!isDarkMode);
-    
     if (isDarkMode) {
       darkMode.disable();
     } else {
@@ -183,7 +182,7 @@ export default function Topbar() {
 
         <NavbarContent justify="end">{renderList()}</NavbarContent>
         <Switch
-          defaultSelected={isDarkMode}
+          defaultSelected={!isDarkMode}
           size="lg"
           color="success"
           startContent={<SunIcon />}

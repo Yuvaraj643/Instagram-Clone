@@ -3,7 +3,7 @@ import "./Loader.css"
 
 const Loader = () => {
   return (
-    <section className='center'>
+    <section className='center h-screen'>
     <div className="loader"></div>
     </section>
   )
