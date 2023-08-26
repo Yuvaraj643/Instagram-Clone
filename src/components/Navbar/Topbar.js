@@ -86,7 +86,7 @@ export default function Topbar() {
               navigate("/login");
             }}
           >
-            Logout
+            <i class="material-icons">power_settings_new</i>
           </Button>
         </NavbarItem>,
       ];
