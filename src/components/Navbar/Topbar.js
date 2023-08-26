@@ -1,4 +1,7 @@
 import React, { useState, useEffect, useContext } from "react";
+import { Switch } from "@nextui-org/react";
+import { MoonIcon } from "./DarkMode/MoonIcon";
+import { SunIcon } from "./DarkMode/SunIcon";
 import { UserContext } from "../../App";
 import { Link } from "react-router-dom";
 import {
@@ -33,10 +36,29 @@ import { Input } from "@nextui-org/react";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useNavigate } from "react-router-dom";
+import { User } from "@nextui-org/react";
+import useDarkMode from "use-dark-mode";
+import "./topbar.css";
 
 export default function Topbar() {
   const { state, dispatch } = useContext(UserContext);
   const navigate = useNavigate();
+  const darkMode = useDarkMode(false);
+
+  //darkmode
+  const [isDarkMode, setIsDarkMode] = useState(true); // Assuming dark mode is enabled by default
+
+  const toggleDarkMode = () => {
+    setIsDarkMode(!isDarkMode);
+    
+    if (isDarkMode) {
+      darkMode.disable();
+    } else {
+      darkMode.enable();
+    }
+  };
+
+
   const renderList = () => {
     if (state) {
       return [
@@ -46,32 +68,32 @@ export default function Topbar() {
           </Button>
         </NavbarItem>,
         <NavbarItem>
-          <Button as={Link} to="/profile" color="warning" variant="flat">
+          <Button as={Link} to="/profile" color="success">
             Profile
           </Button>
         </NavbarItem>,
-         <NavbarItem>
-         <Button  color="danger"
-         onClick={
-           () => {
-             localStorage.clear();
-             dispatch({type:"CLEAR"})
-             navigate("/login");
-           }
-         }>
-           Logout
-         </Button>
-       </NavbarItem>
+        <NavbarItem>
+          <Button
+            color="danger"
+            onClick={() => {
+              localStorage.clear();
+              dispatch({ type: "CLEAR" });
+              navigate("/login");
+            }}
+          >
+            Logout
+          </Button>
+        </NavbarItem>,
       ];
     } else {
       return [
         <NavbarItem>
-          <Button as={Link} to="/login" color="primary" variant="ghost">
+          <Button as={Link} to="/login" color="primary" className="text-white">
             Sign In
           </Button>
         </NavbarItem>,
         <NavbarItem>
-          <Button as={Link} to="/signup" color="primary" variant="ghost">
+          <Button as={Link} to="/signup" color="primary" className="text-white">
             Sign Up
           </Button>
         </NavbarItem>,
@@ -137,21 +159,39 @@ export default function Topbar() {
       <Navbar disableAnimation isBordered>
         <NavbarContent className="sm:hidden pr-3" justify="center">
           <NavbarBrand>
-            <Link to={state?"/":"https://instagram-83t5.onrender.com/login"}>
-              <img src={logo} alt="logo" width="150px" />
+            <Link
+              to={state ? "/" : "https://instagram-83t5.onrender.com/login"}
+            >
+              <p className="logo-title  text-foreground bg-background text-2xl font-bold">
+                Instagram
+              </p>
             </Link>
           </NavbarBrand>
         </NavbarContent>
 
         <NavbarContent className="hidden sm:flex gap-4" justify="center">
           <NavbarBrand>
-            <Link to={"/"}>
-              <img src={logo} alt="logo" width="150px" />
+            <Link
+              to={state ? "/" : "https://instagram-83t5.onrender.com/login"}
+            >
+              <p className="logo-title text-foreground bg-background text-4xl font-bold">
+                Instagram
+              </p>
             </Link>
           </NavbarBrand>
         </NavbarContent>
 
         <NavbarContent justify="end">{renderList()}</NavbarContent>
+        <Switch
+          defaultSelected={isDarkMode}
+          size="lg"
+          color="success"
+          startContent={<SunIcon />}
+          endContent={<MoonIcon />}
+          onChange={toggleDarkMode}
+        >
+          {/* {isDarkMode ? "Dark mode" : "Light mode"} */}
+        </Switch>
       </Navbar>
       <ToastContainer
         position="top-right"

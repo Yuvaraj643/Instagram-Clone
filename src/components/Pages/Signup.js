@@ -81,7 +81,7 @@ export default function Signup() {
             pauseOnHover
             theme="colored"
           />
-          <div className="flex justify-center items-center my-24">
+          <div className="flex justify-center items-center h-screen">
             <Card className="min-w-[400px]">
               <CardHeader className="flex gap-3">
                 <Image

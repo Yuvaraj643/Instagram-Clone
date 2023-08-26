@@ -15,7 +15,9 @@ import Profile from "./components/Pages/Profile";
 import Loader from "./components/Loader/Loader";
 import { reducer, initialState } from "./reducers/userReducer";
 import NotFound from "./components/404/NotFound";
-
+import { ThemeProvider as NextThemesProvider } from "next-themes";
+import { NextUIProvider } from "@nextui-org/react";
+import useDarkMode from "use-dark-mode";
 export const UserContext = createContext();
 const Routing = () => {
   const navigate = useNavigate();
@@ -58,6 +60,7 @@ const Routing = () => {
 const App = () => {
   const [state, dispatch] = useReducer(reducer, initialState);
   const [isLoading, setLoading] = useState(true);
+  const darkMode = useDarkMode(false);
 
   useEffect(() => {
     setTimeout(() => {
@@ -68,8 +71,14 @@ const App = () => {
     <>
       <UserContext.Provider value={{ state, dispatch }}>
         <BrowserRouter>
-          <Topbar />
-          {isLoading ? <Loader /> : <Routing />}
+          <main
+            className={`${
+              darkMode.value ? "dark" : ""
+            } text-foreground bg-background`}
+          >
+            <Topbar />
+            {isLoading ? <Loader /> : <Routing />}
+          </main>
         </BrowserRouter>
       </UserContext.Provider>
     </>
