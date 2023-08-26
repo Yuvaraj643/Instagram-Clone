@@ -74,7 +74,7 @@ const App = () => {
           <main
             className= {`${
               darkMode.value ? "dark" : ""
-            } text-foreground bg-background h-screen`}
+            } text-foreground bg-background`}
           >
             <Topbar />
             {isLoading ? <Loader /> : <Routing />}

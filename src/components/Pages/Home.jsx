@@ -97,7 +97,7 @@ export default function Home() {
     {loading ? (
         <Loader />
       ) : (
-      <section className="flex flex-col items-center h-screen">
+      <section className="flex flex-col items-center " >
         {data.map((item) => {
           return (
             <Card className="py-4 lg:w-1/3 my-2" key={item._id}>
