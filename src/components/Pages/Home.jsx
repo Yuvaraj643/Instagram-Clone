@@ -104,10 +104,10 @@ export default function Home() {
                 <CardHeader className="pb-0 pt-2 px-6 flex items-start">
                   <Image
                     alt="nextui logo"
-                    height={40}
+                    height={45}
                     radius="sm"
-                    src="https://avatars.githubusercontent.com/u/86160567?s=200&v=4"
-                    width={40}
+                    src="https://cdn3.iconfinder.com/data/icons/social-messaging-productivity-6/128/profile-male-circle2-512.png"
+                    width={45}
                   />
                   <div className="ml-4">
                     <p className="text-lg uppercase font-bold">
