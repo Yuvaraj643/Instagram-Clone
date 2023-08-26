@@ -79,7 +79,7 @@ export default function Topbar() {
         </NavbarItem>,
         <NavbarItem>
           <a
-            className ="p-0 m-0 color-red"
+            className ="color-red cursor-pointer"
             onClick={() => {
               localStorage.clear();
               dispatch({ type: "CLEAR" });
