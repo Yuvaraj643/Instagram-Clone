@@ -37,6 +37,8 @@ export default function Home() {
       });
   }, []);
 
+  const reversedData = [...data].reverse();
+
   const likePost = (id) => {
     fetch("https://instagram-83t5.onrender.com/like", {
       method: "put",
@@ -98,7 +100,7 @@ export default function Home() {
         <Loader />
       ) : (
         <section className="flex flex-col items-center ">
-          {data.map((item) => {
+          {reversedData.map((item) => {
             return (
               <Card className="py-4 lg:w-1/3 my-2" key={item._id}>
                 <CardHeader className="pb-0 pt-2 px-6 flex items-start">

@@ -38,7 +38,7 @@ import "react-toastify/dist/ReactToastify.css";
 import { useNavigate } from "react-router-dom";
 import { User } from "@nextui-org/react";
 import useDarkMode from "use-dark-mode";
-import {Avatar} from "@nextui-org/react";
+import { Avatar } from "@nextui-org/react";
 import "./topbar.css";
 
 export default function Topbar() {
@@ -71,15 +71,15 @@ export default function Topbar() {
             Profile
           </Button> */}
           <Link to="/profile">
-          <Avatar
-            src="https://i.pravatar.cc/150?u=a04258114e29026708c"
-            size="md"
-          />
+            <Avatar
+              src="https://i.pravatar.cc/150?u=a04258114e29026708c"
+              size="md"
+            />
           </Link>
         </NavbarItem>,
         <NavbarItem>
           <a
-            className ="color-red cursor-pointer"
+            className="color-red cursor-pointer"
             onClick={() => {
               localStorage.clear();
               dispatch({ type: "CLEAR" });
@@ -133,6 +133,9 @@ export default function Topbar() {
             toast.error(data.error);
           } else {
             toast.success("Post created successfully");
+            setTimeout(() => {
+              window.location.reload();
+            }, 2000);
           }
         })
         .catch((err) => {

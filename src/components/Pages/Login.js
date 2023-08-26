@@ -25,7 +25,7 @@ export default function Login() {
   useEffect(() => {
     setTimeout(() => {
       setLoading(false);
-    }, 1000);
+    }, 200);
   })
 
   const PostData = () => {
