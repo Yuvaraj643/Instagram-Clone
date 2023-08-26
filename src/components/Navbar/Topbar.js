@@ -78,8 +78,8 @@ export default function Topbar() {
           </Link>
         </NavbarItem>,
         <NavbarItem>
-          <Button
-            color="danger"
+          <a
+            className ="p-0 m-0 color-red"
             onClick={() => {
               localStorage.clear();
               dispatch({ type: "CLEAR" });
@@ -87,7 +87,7 @@ export default function Topbar() {
             }}
           >
             <i class="material-icons">power_settings_new</i>
-          </Button>
+          </a>
         </NavbarItem>,
       ];
     } else {
