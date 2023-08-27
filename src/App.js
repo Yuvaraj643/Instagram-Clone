@@ -18,6 +18,8 @@ import NotFound from "./components/404/NotFound";
 import { ThemeProvider as NextThemesProvider } from "next-themes";
 import { NextUIProvider } from "@nextui-org/react";
 import useDarkMode from "use-dark-mode";
+import 'react-dotenv';
+
 export const UserContext = createContext();
 const Routing = () => {
   const navigate = useNavigate();

@@ -12,6 +12,7 @@ import {
 } from "@nextui-org/react";
 import { HeartIcon } from "./HeartIcon";
 import Loader from "../Loader/Loader";
+import { Input } from "@nextui-org/react";
 export default function Home() {
   const [data, setData] = useState([]);
   const [liked, setLiked] = React.useState(false);
@@ -94,6 +95,35 @@ export default function Home() {
         console.log(err);
       });
   };
+
+  const makeComment = (text, postId) => {
+    fetch("https://instagram-83t5.onrender.com/comment", {
+      method: "put",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: "Bearer " + localStorage.getItem("jwt"),
+      },
+      body: JSON.stringify({
+        postId,
+        text,
+      }),
+    }).then(res => res.json())
+      .then(result => {
+        console.log(result);
+        const newData = data.map((item) => {
+          if (item._id === result._id) {
+            return result;
+          } else {
+            return item;
+          }
+        });
+        setData(newData);
+        console.log(newData)
+      }).catch(err => {
+        console.log(err);
+      })
+  };
+
   return (
     <>
       {loading ? (
@@ -115,7 +145,7 @@ export default function Home() {
                     <p className="text-lg uppercase font-bold">
                       {item.postedBy.name}
                     </p>
-                    <small className="text-default-500">{item.body}</small>
+                    {/* <small className="text-default-500">{item.body}</small> */}
                   </div>
                 </CardHeader>
                 <CardBody className="py-2 flex items-center justify-center">
@@ -127,7 +157,7 @@ export default function Home() {
                   />
                 </CardBody>
                 <hr></hr>
-                <CardBody>
+                <div className="flex flex-col pl-6 py-2">
                   {item.likes.includes(state._id) ? (
                     <i
                       class="large material-icons cursor-pointer hover:text-red-700"
@@ -146,7 +176,29 @@ export default function Home() {
                     </i>
                   )}
                   <span>{item.likes.length} likes</span>
-                </CardBody>
+                  <p className="text-default-500">{item.body}</p>
+                  {
+                    item.comments.map((comment) => {
+                      return (
+                        <p key={comment._id}>
+                          <span style={{ fontWeight: "bold" }} className="pr-2">
+                            {comment.postedBy.name}
+                          </span>
+                          {comment.text}
+                        </p>
+                      )
+                    })
+                  }
+                </div>
+                <form className="pl-3" onSubmit={(e) => {e.preventDefault()
+                makeComment(e.target[0].value, item._id)}}>
+                  <Input
+                    className="p-0 m-0"
+                    type="text"
+                    labelPlacement="outside"
+                    placeholder="Enter your comment"
+                  />
+                </form>
               </Card>
             );
           })}
