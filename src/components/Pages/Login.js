@@ -15,7 +15,7 @@ import { Input } from "@nextui-org/react";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Loader from "../Loader/Loader";
-import { SERVER_URL } from "../../keys";
+// import { SERVER_URL } from "../../keys";
 
 export default
  function Login() {
