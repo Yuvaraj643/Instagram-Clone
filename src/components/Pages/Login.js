@@ -15,7 +15,6 @@ import { Input } from "@nextui-org/react";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Loader from "../Loader/Loader";
-// import { SERVER_URL } from "../../keys";
 
 export default
  function Login() {
@@ -39,7 +38,7 @@ export default
       toast.error("Invalid Email");
       return;
     }
-    fetch(`${SERVER_URL}/signin`, {
+    fetch("https://instagram-83t5.onrender.com/signin", {
       method: "post",
       headers: {
         "Content-Type": "application/json",
