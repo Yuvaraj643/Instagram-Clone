@@ -12,6 +12,7 @@ import Home from "./components/Pages/Home";
 import Login from "./components/Pages/Login";
 import Signup from "./components/Pages/Signup";
 import Profile from "./components/Pages/Profile";
+import UserProfile from "./components/Pages/UserProfile";
 import Loader from "./components/Loader/Loader";
 import { reducer, initialState } from "./reducers/userReducer";
 import NotFound from "./components/404/NotFound";
@@ -50,7 +51,8 @@ const Routing = () => {
             <Route path="/" element={<Home />} />
             <Route path="/login" element={<Login />} />
             <Route path="/signup" element={<Signup />} />
-            <Route path="/profile" element={<Profile />} />
+            <Route exact path="/profile" element={<Profile />} />
+            <Route path='/profile/:userid' element={<UserProfile />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         )}

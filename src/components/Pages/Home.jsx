@@ -13,6 +13,7 @@ import {
 import { HeartIcon } from "./HeartIcon";
 import Loader from "../Loader/Loader";
 import { Input } from "@nextui-org/react";
+import { Link } from "react-router-dom";
 export default function Home() {
   const [data, setData] = useState([]);
   const [liked, setLiked] = React.useState(false);
@@ -124,6 +125,8 @@ export default function Home() {
       })
   };
 
+  
+
   return (
     <>
       {loading ? (
@@ -142,10 +145,11 @@ export default function Home() {
                     width={45}
                   />
                   <div className="ml-4">
+                    <Link to={`/profile/${item.postedBy._id}`}>
                     <p className="text-lg uppercase font-bold">
                       {item.postedBy.name}
                     </p>
-                    {/* <small className="text-default-500">{item.body}</small> */}
+                    </Link>
                   </div>
                 </CardHeader>
                 <CardBody className="py-2 flex items-center justify-center">
