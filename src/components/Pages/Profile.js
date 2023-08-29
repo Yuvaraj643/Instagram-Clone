@@ -21,12 +21,24 @@ import axios from "axios";
 import "./style.css";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import {
+  Modal,
+  ModalContent,
+  ModalHeader,
+  ModalBody,
+  ModalFooter,
+  useDisclosure,
+  RadioGroup,
+  Radio,
+} from "@nextui-org/react";
 
 export default function Profile() {
   const [myposts, setMyPosts] = useState([]);
   const [totalPosts, settotalPosts] = useState([]);
   const { state, dispatch } = useContext(UserContext);
   const [loading, setLoading] = useState(true);
+  const { isOpen, onOpen, onOpenChange } = useDisclosure();
+  const [modalPlacement, setModalPlacement] = React.useState("auto");
 
   useEffect(() => {
     setTimeout(() => {
@@ -59,18 +71,18 @@ export default function Profile() {
       const headers = {
         Authorization: `Bearer ${token}`,
       };
-      const response = await axios.delete(`https://instagram-83t5.onrender.com/delete-post/${postId}`, {
-        headers,
-        timeout: 10000,
-      });
+      const response = await axios.delete(
+        `https://instagram-83t5.onrender.com/delete-post/${postId}`,
+        {
+          headers,
+          timeout: 10000,
+        }
+      );
       console.log("Post deleted:", response.data);
       toast.success(response.data.message);
       setMyPosts((prevPosts) =>
         prevPosts.filter((post) => post._id !== postId)
       );
-      setTimeout(() => {
-        window.location.reload();
-      }, 1500);
     } catch (error) {
       console.error("Error deleting post:", error);
     }
@@ -139,7 +151,7 @@ export default function Profile() {
                     >
                       <i
                         className="material-icons absolute top-2 right-2 z-10 red600 cursor-pointer"
-                        onClick={() => deletePost(item._id)}
+                        onClick={onOpen}
                       >
                         delete
                       </i>
@@ -150,6 +162,37 @@ export default function Profile() {
                         className="z-0 w-full h-full object-cover"
                         src={item.photo}
                       />
+                      <Modal
+                        isOpen={isOpen}
+                        placement={"center"}
+                        onOpenChange={onOpenChange}
+                      >
+                        <ModalContent>
+                          {(onClose) => (
+                            <>
+                              <ModalHeader className="flex flex-col gap-1">
+                                Delete Post
+                              </ModalHeader>
+                              <ModalBody>
+                                Are you sure you want to delete this post?
+                              </ModalBody>
+                              <ModalFooter>
+                                <Button
+                                  color="danger"
+                                  variant="light"
+                                  onPress={onClose}
+                                  onClick={() => deletePost(item._id)}
+                                >
+                                  Yes
+                                </Button>
+                                <Button color="primary" onPress={onClose}>
+                                  No
+                                </Button>
+                              </ModalFooter>
+                            </>
+                          )}
+                        </ModalContent>
+                      </Modal>
                     </Card>
                   );
                 })}

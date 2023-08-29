@@ -164,7 +164,7 @@ export default function Home() {
                 <div className="flex flex-col pl-6 py-2">
                   {item.likes.includes(state._id) ? (
                     <i
-                      class="large material-icons cursor-pointer hover:text-red-700"
+                      className="large material-icons cursor-pointer hover:text-red-700"
                       style={{ color: "red" }}
                       onClick={() => unlikePost(item._id)}
                     >
@@ -172,7 +172,7 @@ export default function Home() {
                     </i>
                   ) : (
                     <i
-                      class="large material-icons cursor-pointer hover:text-red-700"
+                      className="large material-icons cursor-pointer hover:text-red-700"
                       style={{ color: "red" }}
                       onClick={() => likePost(item._id)}
                     >

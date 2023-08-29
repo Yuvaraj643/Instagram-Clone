@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useContext } from "react";
+import { Spinner } from "@nextui-org/react";
 import { Switch } from "@nextui-org/react";
 import { MoonIcon } from "./DarkMode/MoonIcon";
 import { SunIcon } from "./DarkMode/SunIcon";
@@ -86,7 +87,7 @@ export default function Topbar() {
               navigate("/login");
             }}
           >
-            <i class="material-icons">power_settings_new</i>
+            <i className="material-icons">power_settings_new</i>
           </a>
         </NavbarItem>,
       ];
@@ -112,6 +113,8 @@ export default function Topbar() {
   const [body, setBody] = useState("");
   const [image, setImage] = useState("");
   const [url, setUrl] = useState("");
+  const [loading, setLoading] = useState(false);
+
   useEffect(() => {
     if (url) {
       fetch("https://instagram-83t5.onrender.com/create-post", {
@@ -129,6 +132,7 @@ export default function Topbar() {
         .then((res) => res.json())
         .then((data) => {
           console.log(data);
+
           if (data.error) {
             toast.error(data.error);
           } else {
@@ -141,10 +145,12 @@ export default function Topbar() {
         .catch((err) => {
           console.log(err);
         });
+      setLoading(false);
     }
   }, [url]);
 
   const postDetails = () => {
+    setLoading(true);
     const data = new FormData();
     data.append("file", image);
     data.append("upload_preset", "insta-clone");
@@ -160,12 +166,14 @@ export default function Topbar() {
       .catch((err) => {
         console.log(err);
       });
+      setLoading(false);
   };
+
 
   return (
     <>
       <Navbar disableAnimation isBordered>
-        <NavbarContent className="sm:hidden pr-1" justify="center">
+        <NavbarContent className="sm:hidden pr-1" justify="center" >
           <NavbarBrand>
             <Link
               to={state ? "/" : "https://instagram-83t5.onrender.com/login"}
@@ -236,11 +244,13 @@ export default function Topbar() {
                     <Input
                       type="email"
                       label="Title of Post"
+                      required
                       onChange={(e) => setTitle(e.target.value)}
                     />
                     <Input
                       type="email"
                       label="Description"
+                      required
                       onChange={(e) => setBody(e.target.value)}
                       className="my-4"
                     />
@@ -252,6 +262,7 @@ export default function Topbar() {
                         className="relative m-0 block w-full min-w-0 flex-auto rounded border border-solid border-neutral-300 bg-clip-padding px-3 py-[0.32rem] text-base font-normal text-neutral-700 transition duration-300 ease-in-out file:-mx-3 file:-my-[0.32rem] file:overflow-hidden file:rounded-none file:border-0 file:border-solid file:border-inherit file:bg-neutral-100 file:px-3 file:py-[0.32rem] file:text-neutral-700 file:transition file:duration-150 file:ease-in-out file:[border-inline-end-width:1px] file:[margin-inline-end:0.75rem] hover:file:bg-neutral-200 focus:border-primary focus:text-neutral-700 focus:shadow-te-primary focus:outline-none dark:border-neutral-600 dark:text-neutral-200 dark:file:bg-neutral-700 dark:file:text-neutral-100 dark:focus:border-primary"
                         type="file"
                         id="formFile"
+                        required
                         onChange={(e) => setImage(e.target.files[0])}
                       />
                     </div>
@@ -262,6 +273,7 @@ export default function Topbar() {
                 <Button color="danger" variant="light" onPress={onClose}>
                   Cancel
                 </Button>
+                {loading && <Spinner label="Loading..." color="warning" />}
                 <Button
                   color="primary"
                   onPress={onClose}
