@@ -21,7 +21,7 @@ import { NextUIProvider } from "@nextui-org/react";
 import useDarkMode from "use-dark-mode";
 import 'react-dotenv';
 
-export const API_URL = "https://instagram-83t5.onrender.com" || "http://localhost:5000";
+export const API_URL = "https://instagram-83t5.onrender.com";
 
 export const UserContext = createContext();
 const Routing = () => {

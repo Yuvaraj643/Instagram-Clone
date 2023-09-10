@@ -31,12 +31,14 @@ import {
   RadioGroup,
   Radio,
 } from "@nextui-org/react";
-
+import { API_URL } from "../../App";
 export default function Profile() {
   const [myposts, setMyPosts] = useState([]);
   const [totalPosts, settotalPosts] = useState([]);
   const { state, dispatch } = useContext(UserContext);
   const [loading, setLoading] = useState(true);
+  const [followerscount, setfollowers] = useState([]);
+  const [followingcount, setfollowing] = useState([]);
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
   const [modalPlacement, setModalPlacement] = React.useState("auto");
 
@@ -46,7 +48,25 @@ export default function Profile() {
     }, 2000);
   }, []);
 
-  // console.log(state)
+  console.log(state)
+
+  useEffect(() => {
+    const userid = state._id;
+    fetch(`${API_URL}/user/${userid}`, {
+      headers: {
+        Authorization: "Bearer " + localStorage.getItem("jwt"),
+      },
+    })
+      .then((res) => res.json())
+      .then((result) => {
+        console.log(result)
+        setfollowers(result.user.followers.length);
+        setfollowing(result.user.following.length);
+      })
+      .catch((error) => {
+        console.error("Error fetching data:", error);
+      });
+  }, []);
 
   useEffect(() => {
     fetch("https://instagram-83t5.onrender.com/my-posts", {
@@ -130,11 +150,11 @@ export default function Profile() {
                       <p className="text-base">Posts</p>
                     </div>
                     <div className="flex flex-col text-center">
-                      <span>100</span>
+                      <span>{followerscount}</span>
                       <p className="text-base">Followers</p>
                     </div>
                     <div className="flex flex-col text-center">
-                      <span>100</span>
+                      <span>{followingcount}</span>
                       <p className="text-base">Following</p>
                     </div>
                   </div>
