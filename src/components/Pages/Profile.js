@@ -57,7 +57,7 @@ export default function Profile() {
       .then((res) => res.json())
       .then((result) => {
         setMyPosts(result.myposts);
-        // console.log(result);
+        console.log(result);
         settotalPosts(result.myposts.length);
       })
       .catch((error) => {
@@ -130,11 +130,11 @@ export default function Profile() {
                       <p className="text-base">Posts</p>
                     </div>
                     <div className="flex flex-col text-center">
-                      <span>{state.currentUser.followers.length}</span>
+                      <span>100</span>
                       <p className="text-base">Followers</p>
                     </div>
                     <div className="flex flex-col text-center">
-                      <span>{state.currentUser.following.length}</span>
+                      <span>100</span>
                       <p className="text-base">Following</p>
                     </div>
                   </div>
