@@ -14,11 +14,18 @@ import { HeartIcon } from "./HeartIcon";
 import Loader from "../Loader/Loader";
 import { Input } from "@nextui-org/react";
 import { Link } from "react-router-dom";
+import { API_URL } from "../../App";
+import { useParams } from "react-router-dom";
+
 export default function Home() {
   const [data, setData] = useState([]);
   const [liked, setLiked] = React.useState(false);
   const { state, dispatch } = useContext(UserContext);
   const [loading, setLoading] = useState(true);
+  const [showfollow, setShowfollow] = useState(true);
+  const [followerscount, setfollowers] = useState([]);
+  const [userProfile, setProfile] = useState(null);
+  const { userid } = useParams();
 
   useEffect(() => {
     setTimeout(() => {
@@ -125,6 +132,76 @@ export default function Home() {
       })
   };
 
+  const followUser = () => {
+    fetch(`${API_URL}/follow`, {
+      method: "put",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: "Bearer " + localStorage.getItem("jwt"),
+      },
+      body: JSON.stringify({
+        followId: userid,
+      }),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        setfollowers(data.updatedUser.followers.length);
+        dispatch({
+          type: "UPDATE",
+          payload: { following: data.following, followers: data.followers },
+        });
+        localStorage.setItem("user", JSON.stringify(data));
+        setProfile((prevState) => {
+          return {
+            ...prevState,
+            user: {
+              ...prevState.user,
+              followers: [...prevState.user.followers, data._id],
+            },
+          };
+        });
+        setShowfollow(false);
+      });
+  };
+
+  const unfollowUser = () => {
+    fetch(`${API_URL}/unfollow`, {
+      method: "put",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: "Bearer " + localStorage.getItem("jwt"),
+      },
+      body: JSON.stringify({
+        unfollowId: userid,
+      }),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        setfollowers(data.updatedFollowedUser.followers.length);
+        console.log(data);
+        dispatch({
+          type: "UPDATE",
+          payload: { following: data.following, followers: data.followers },
+        });
+        localStorage.setItem("user", JSON.stringify(data));
+
+        setProfile((prevState) => {
+          const newFollower = prevState.user.followers.filter(
+            (item) => item !== data._id
+          );
+          return {
+            ...prevState,
+            user: {
+              ...prevState.user,
+              followers: newFollower,
+            },
+          };
+        });
+        setShowfollow(true);
+      });
+  };
+
   
 
   return (
@@ -151,6 +228,27 @@ export default function Home() {
                     </p>
                     </Link>
                   </div>
+                  {/* {showfollow ? (
+                            <Button
+                              className="my-1.5"
+                              color="primary"
+                              size="sm"
+                              variant="shadow"
+                              onClick={() => followUser()}
+                            >
+                              Follow
+                            </Button>
+                          ) : (
+                            <Button
+                              className="my-1.5"
+                              color="primary"
+                              size="sm"
+                              variant="shadow"
+                              onClick={() => unfollowUser()}
+                            >
+                              Unfollow
+                            </Button>
+                          )} */}
                 </CardHeader>
                 <CardBody className="py-2 flex items-center justify-center">
                   <Image

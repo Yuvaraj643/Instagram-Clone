@@ -21,6 +21,8 @@ import { NextUIProvider } from "@nextui-org/react";
 import useDarkMode from "use-dark-mode";
 import 'react-dotenv';
 
+export const API_URL = "http://localhost:5000";
+
 export const UserContext = createContext();
 const Routing = () => {
   const navigate = useNavigate();
