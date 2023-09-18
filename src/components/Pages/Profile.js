@@ -39,7 +39,7 @@ export default function Profile() {
   const [loading, setLoading] = useState(true);
   const [followerscount, setfollowers] = useState([]);
   const [followingcount, setfollowing] = useState([]);
-  const { isOpen, onOpen, onOpenChange } = useDisclosure();
+  const { isOpen,isOpenPost, onOpen,  onOpenChange } = useDisclosure();
   const [modalPlacement, setModalPlacement] = React.useState("auto");
 
   useEffect(() => {
@@ -48,7 +48,7 @@ export default function Profile() {
     }, 2000);
   }, []);
 
-  console.log(state)
+  console.log(state);
 
   useEffect(() => {
     const userid = state._id;
@@ -59,7 +59,7 @@ export default function Profile() {
     })
       .then((res) => res.json())
       .then((result) => {
-        console.log(result)
+        console.log(result);
         setfollowers(result.user.followers.length);
         setfollowing(result.user.following.length);
       })
@@ -69,7 +69,7 @@ export default function Profile() {
   }, []);
 
   useEffect(() => {
-    fetch("https://instagram-83t5.onrender.com/my-posts", {
+    fetch(`${API_URL}/my-posts`, {
       headers: {
         Authorization: "Bearer " + localStorage.getItem("jwt"),
       },
@@ -92,13 +92,10 @@ export default function Profile() {
       const headers = {
         Authorization: `Bearer ${token}`,
       };
-      const response = await axios.delete(
-        `https://instagram-83t5.onrender.com/delete-post/${postId}`,
-        {
-          headers,
-          timeout: 10000,
-        }
-      );
+      const response = await axios.delete(`${API_URL}/delete-post/${postId}`, {
+        headers,
+        timeout: 10000,
+      });
       console.log("Post deleted:", response.data);
       toast.success(response.data.message);
       setMyPosts((prevPosts) =>
@@ -108,7 +105,6 @@ export default function Profile() {
       console.error("Error deleting post:", error);
     }
   };
-
   return (
     <>
       {loading ? (
@@ -151,6 +147,7 @@ export default function Profile() {
                     </div>
                     <div className="flex flex-col text-center">
                       <span>{followerscount}</span>
+                      {/* <span>{state.followers.length}</span> */}
                       <p className="text-base">Followers</p>
                     </div>
                     <div className="flex flex-col text-center">
@@ -169,6 +166,7 @@ export default function Profile() {
                     <Card
                       className="col-span-12 sm:col-span-4 h-[300px]"
                       key={item._id}
+                      
                     >
                       <i
                         className="material-icons absolute top-2 right-2 z-10 red600 cursor-pointer"
@@ -182,6 +180,7 @@ export default function Profile() {
                         alt="Card background"
                         className="z-0 w-full h-full object-cover"
                         src={item.photo}
+                        onClick={onOpen}
                       />
                       <Modal
                         isOpen={isOpen}

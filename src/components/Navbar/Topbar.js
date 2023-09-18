@@ -117,7 +117,7 @@ export default function Topbar() {
 
   useEffect(() => {
     if (url) {
-      fetch("https://instagram-83t5.onrender.com/create-post", {
+      fetch("${API_URL}/create-post", {
         method: "post",
         headers: {
           "Content-Type": "application/json",
@@ -176,7 +176,7 @@ export default function Topbar() {
         <NavbarContent className="sm:hidden pr-1" justify="center" >
           <NavbarBrand>
             <Link
-              to={state ? "/" : "https://instagram-83t5.onrender.com/login"}
+              to={state ? "/" : "${API_URL}/login"}
             >
               <p className="logo-title  text-foreground bg-background text-2xl font-bold">
                 Instagram
@@ -188,7 +188,7 @@ export default function Topbar() {
         <NavbarContent className="hidden sm:flex gap-4" justify="center">
           <NavbarBrand>
             <Link
-              to={state ? "/" : "https://instagram-83t5.onrender.com/login"}
+              to={state ? "/" : "${API_URL}/login"}
             >
               <p className="logo-title text-foreground bg-background text-4xl font-bold">
                 Instagram

@@ -1,12 +1,12 @@
 import React, { useState, useEffect, useContext } from "react";
 import { UserContext } from "../../App";
-
 import {
   Card,
   CardHeader,
   CardBody,
   Image,
   CardFooter,
+  useDisclosure,
   Divider,
   Button,
 } from "@nextui-org/react";
@@ -16,7 +16,15 @@ import { Input } from "@nextui-org/react";
 import { Link } from "react-router-dom";
 import { API_URL } from "../../App";
 import { useParams } from "react-router-dom";
-
+import {
+  Modal,
+  ModalContent,
+  ModalHeader,
+  ModalBody,
+  ModalFooter,
+  RadioGroup,
+  Radio,
+} from "@nextui-org/react";
 export default function Home() {
   const [data, setData] = useState([]);
   const [liked, setLiked] = React.useState(false);
@@ -26,6 +34,7 @@ export default function Home() {
   const [followerscount, setfollowers] = useState([]);
   const [userProfile, setProfile] = useState(null);
   const { userid } = useParams();
+  const { isOpen, onOpen, onOpenChange } = useDisclosure();
 
   useEffect(() => {
     setTimeout(() => {
@@ -34,7 +43,7 @@ export default function Home() {
   }, []);
 
   useEffect(() => {
-    fetch("https://instagram-83t5.onrender.com/all-posts", {
+    fetch(`${API_URL}/all-posts`, {
       headers: {
         Authorization: "Bearer " + localStorage.getItem("jwt"),
       },
@@ -49,7 +58,7 @@ export default function Home() {
   const reversedData = [...data].reverse();
 
   const likePost = (id) => {
-    fetch("https://instagram-83t5.onrender.com/like", {
+    fetch(`${API_URL}/like`, {
       method: "put",
       headers: {
         "Content-Type": "application/json",
@@ -77,7 +86,7 @@ export default function Home() {
   };
 
   const unlikePost = (id) => {
-    fetch("https://instagram-83t5.onrender.com/unlike", {
+    fetch(`${API_URL}/unlike`, {
       method: "put",
       headers: {
         "Content-Type": "application/json",
@@ -104,33 +113,7 @@ export default function Home() {
       });
   };
 
-  const makeComment = (text, postId) => {
-    fetch("https://instagram-83t5.onrender.com/comment", {
-      method: "put",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: "Bearer " + localStorage.getItem("jwt"),
-      },
-      body: JSON.stringify({
-        postId,
-        text,
-      }),
-    }).then(res => res.json())
-      .then(result => {
-        console.log(result);
-        const newData = data.map((item) => {
-          if (item._id === result._id) {
-            return result;
-          } else {
-            return item;
-          }
-        });
-        setData(newData);
-        console.log(newData)
-      }).catch(err => {
-        console.log(err);
-      })
-  };
+
 
   const followUser = () => {
     fetch(`${API_URL}/follow`, {
@@ -201,8 +184,36 @@ export default function Home() {
         setShowfollow(true);
       });
   };
+  const makeComment = (text, postId) => {
+    fetch(`${API_URL}/comment`, {
+      method: "put",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: "Bearer " + localStorage.getItem("jwt"),
+      },
+      body: JSON.stringify({
+        postId,
+        text,
+      }),
+    })
+      .then((res) => res.json())
+      .then((result) => {
+        console.log(result);
+        const newData = data.map((item) => {
+          if (item._id === result._id) {
+            return result;
+          } else {
+            return item;
+          }
+        });
+        setData(newData);
+        console.log(newData);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
 
-  
 
   return (
     <>
@@ -223,9 +234,9 @@ export default function Home() {
                   />
                   <div className="ml-4">
                     <Link to={`/profile/${item.postedBy._id}`}>
-                    <p className="text-lg uppercase font-bold">
-                      {item.postedBy.name}
-                    </p>
+                      <p className="text-lg uppercase font-bold">
+                        {item.postedBy.name}
+                      </p>
                     </Link>
                   </div>
                   {/* {showfollow ? (
@@ -279,21 +290,61 @@ export default function Home() {
                   )}
                   <span>{item.likes.length} likes</span>
                   <p className="text-default-500">{item.body}</p>
-                  {
-                    item.comments.map((comment) => {
-                      return (
-                        <p key={comment._id}>
-                          <span style={{ fontWeight: "bold" }} className="pr-2">
-                            {comment.postedBy.name}
-                          </span>
-                          {comment.text}
-                        </p>
-                      )
-                    })
-                  }
+                  {item.comments.map((comment) => {
+                    return (
+                      <p key={comment._id}>
+                        <span style={{ fontWeight: "bold" }} className="pr-2">
+                          {comment.postedBy.name}
+                        </span>
+                        {comment.text}
+                        {/* <i
+                          className="material-icons red600 cursor-pointer absolute right-2"
+                          onClick={onOpen}
+                        >
+                          delete
+                        </i> */}
+                        <Modal
+                          isOpen={isOpen}
+                          placement={"center"}
+                          onOpenChange={onOpenChange}
+                        >
+                          <ModalContent>
+                            {(onClose) => (
+                              <>
+                                <ModalHeader className="flex flex-col gap-1">
+                                  Delete Post
+                                </ModalHeader>
+                                <ModalBody>
+                                  Are you sure you want to delete this comment?
+                                </ModalBody>
+                                <ModalFooter>
+                                  <Button
+                                    color="danger"
+                                    variant="light"
+                                    onPress={onClose}
+                                    // onClick={() => deletePost(item._id)}
+                                  >
+                                    Yes
+                                  </Button>
+                                  <Button color="primary" onPress={onClose}>
+                                    No
+                                  </Button>
+                                </ModalFooter>
+                              </>
+                            )}
+                          </ModalContent>
+                        </Modal>
+                      </p>
+                    );
+                  })}
                 </div>
-                <form className="pl-3" onSubmit={(e) => {e.preventDefault()
-                makeComment(e.target[0].value, item._id)}}>
+                <form
+                  className="pl-3"
+                  onSubmit={(e) => {
+                    e.preventDefault();
+                    makeComment(e.target[0].value, item._id);
+                  }}
+                >
                   <Input
                     className="p-0 m-0"
                     type="text"
