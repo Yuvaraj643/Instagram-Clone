@@ -41,7 +41,7 @@ import { User } from "@nextui-org/react";
 import useDarkMode from "use-dark-mode";
 import { Avatar } from "@nextui-org/react";
 import "./topbar.css";
-
+import { API_URL } from "../../App";
 export default function Topbar() {
   const { state, dispatch } = useContext(UserContext);
   const navigate = useNavigate();
