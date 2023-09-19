@@ -117,7 +117,7 @@ export default function Topbar() {
 
   useEffect(() => {
     if (url) {
-      fetch("${API_URL}/create-post", {
+      fetch(`${API_URL}/create-post`, {
         method: "post",
         headers: {
           "Content-Type": "application/json",
