@@ -229,7 +229,7 @@ export default function Home() {
                     alt="nextui logo"
                     height={45}
                     radius="sm"
-                    src="https://cdn3.iconfinder.com/data/icons/social-messaging-productivity-6/128/profile-male-circle2-512.png"
+                    src="https://th.bing.com/th/id/OIP.3Wm1G5yW_a9UHQEHMYfYSAHaFC?pid=ImgDet&rs=1"
                     width={45}
                   />
                   <div className="ml-4">
