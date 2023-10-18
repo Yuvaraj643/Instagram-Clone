@@ -24,7 +24,7 @@ export default function Signup() {
   const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
   const [image, setImage] = useState("");
-  const [url, setUrl] = useState(null);
+  const [url, setUrl] = useState(undefined);
   useEffect(() => {
     if(url){
       uploadFields();
