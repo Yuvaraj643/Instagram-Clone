@@ -70,6 +70,7 @@ export default function Signup() {
         name,
         email,
         password,
+        pic: url,
       }),
     })
       .then((res) => res.json())

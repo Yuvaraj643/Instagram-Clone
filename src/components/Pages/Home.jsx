@@ -229,7 +229,7 @@ export default function Home() {
                     alt="nextui logo"
                     height={45}
                     radius="sm"
-                    src="https://th.bing.com/th/id/OIP.3Wm1G5yW_a9UHQEHMYfYSAHaFC?pid=ImgDet&rs=1"
+                    src={state?state.pic : "loading"}
                     width={45}
                   />
                   <div className="ml-4">
