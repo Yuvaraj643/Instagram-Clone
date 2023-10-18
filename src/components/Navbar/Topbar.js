@@ -73,7 +73,7 @@ export default function Topbar() {
           </Button> */}
           <Link to="/profile">
             <Avatar
-              src={state? state.pic}
+              src={state? state.pic : ""}
               size="md"
             />
           </Link>
