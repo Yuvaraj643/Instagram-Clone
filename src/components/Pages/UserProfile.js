@@ -31,7 +31,7 @@ export default function Profile() {
   const [username, setUsername] = useState("");
   const [followerscount, setfollowers] = useState([]);
   const [followingcount, setfollowing] = useState([]);
-  const [showfollow, setShowfollow] = useState(true);
+  const [showfollow, setShowfollow] = useState(!state.followers.includes(user));
   const { state, dispatch } = useContext(UserContext);
   const [loading, setLoading] = useState(true);
   const { userid } = useParams();
