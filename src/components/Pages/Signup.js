@@ -14,6 +14,8 @@ import { Input } from "@nextui-org/react";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Loader from "../Loader/Loader";
+import { API_URL } from "../../App";
+
 
 export default function Signup() {
   const [name, setName] = useState("");
