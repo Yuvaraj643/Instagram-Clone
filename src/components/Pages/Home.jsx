@@ -9,6 +9,7 @@ import {
   useDisclosure,
   Divider,
   Button,
+  Avatar,
 } from "@nextui-org/react";
 import { HeartIcon } from "./HeartIcon";
 import Loader from "../Loader/Loader";
@@ -225,9 +226,9 @@ export default function Home() {
             return (
               <Card className="py-4 lg:w-1/3 my-2" key={item._id}>
                 <CardHeader className="pb-0 pt-2 px-6 flex items-start">
-                  <Image
+                  <Avatar
                     alt="profilepic"
-                    size = "md"
+                    size = "lg"
                     src={item ?item.postedBy.pic : "https://th.bing.com/th/id/OIP.3Wm1G5yW_a9UHQEHMYfYSAHaFC?pid=ImgDet&rs=1"}
                   />
                   <div className="ml-4">
