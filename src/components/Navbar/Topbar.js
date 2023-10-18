@@ -176,7 +176,7 @@ export default function Topbar() {
         <NavbarContent className="sm:hidden pr-1" justify="center" >
           <NavbarBrand>
             <Link
-              to={state ? "/" : "${API_URL}/login"}
+              to={state ? "/" : `${API_URL}/login`}
             >
               <p className="logo-title  text-foreground bg-background text-2xl font-bold">
                 Instagram
