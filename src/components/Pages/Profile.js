@@ -130,7 +130,7 @@ export default function Profile() {
               <div className="flex flex-col items-center justify-evenly sm:flex-row sm:items-start">
                 <div className="mb-4 sm:mb-0">
                   <Avatar
-                    src={profilepic}
+                    src={state? state.pic : ""}
                     className="w-40 h-40 text-large"
                   />
                 </div>

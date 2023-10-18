@@ -73,7 +73,7 @@ export default function Topbar() {
           </Button> */}
           <Link to="/profile">
             <Avatar
-              src="https://i.pravatar.cc/150?u=a04258114e29026708c"
+              src={state? state.pic}
               size="md"
             />
           </Link>
