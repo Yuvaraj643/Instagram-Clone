@@ -61,7 +61,7 @@ export default function Signup() {
       toast.error("Invalid Email");
       return;
     }
-    fetch("${API_URL}/signup", {
+    fetch(`${API_URL}/signup`, {
       method: "post",
       headers: {
         "Content-Type": "application/json",
