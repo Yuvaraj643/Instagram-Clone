@@ -229,7 +229,7 @@ export default function Home() {
                   <Avatar
                     alt="profilepic"
                     size = "lg"
-                    src={item ?item.postedBy.pic : "https://th.bing.com/th/id/OIP.3Wm1G5yW_a9UHQEHMYfYSAHaFC?pid=ImgDet&rs=1"}
+                    src={item.postedBy.pic}
                   />
                   <div className="ml-4">
                     <Link to={`/profile/${item.postedBy._id}`}>
