@@ -39,6 +39,7 @@ export default function Profile() {
   const [loading, setLoading] = useState(true);
   const [followerscount, setfollowers] = useState([]);
   const [followingcount, setfollowing] = useState([]);
+  const [profilepic, setProfilePic] = useState("");
   const { isOpen,isOpenPost, onOpen,  onOpenChange } = useDisclosure();
   const [modalPlacement, setModalPlacement] = React.useState("auto");
 
@@ -62,6 +63,7 @@ export default function Profile() {
         console.log(result);
         setfollowers(result.user.followers.length);
         setfollowing(result.user.following.length);
+        setProfilePic(result.user.pic);
       })
       .catch((error) => {
         console.error("Error fetching data:", error);
@@ -128,7 +130,7 @@ export default function Profile() {
               <div className="flex flex-col items-center justify-evenly sm:flex-row sm:items-start">
                 <div className="mb-4 sm:mb-0">
                   <Avatar
-                    src="https://i.pravatar.cc/150?u=a04258114e29026708c"
+                    src={profilepic}
                     className="w-40 h-40 text-large"
                   />
                 </div>
