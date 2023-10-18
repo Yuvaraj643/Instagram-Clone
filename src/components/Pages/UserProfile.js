@@ -31,11 +31,12 @@ export default function Profile() {
   const [username, setUsername] = useState("");
   const [followerscount, setfollowers] = useState([]);
   const [followingcount, setfollowing] = useState([]);
-  const [showfollow, setShowfollow] = useState(state?!state.followers.includes(userid):true);
+  const [showfollow, setShowfollow] = useState(state?!state.following.includes(userid):true);
   const { state, dispatch } = useContext(UserContext);
   const [loading, setLoading] = useState(true);
   const { userid } = useParams();
   // console.log(userid);
+  console.log(state);
 
   useEffect(() => {
     setTimeout(() => {
