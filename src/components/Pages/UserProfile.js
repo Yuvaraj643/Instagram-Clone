@@ -31,9 +31,12 @@ export default function Profile() {
   const [username, setUsername] = useState("");
   const [followerscount, setfollowers] = useState([]);
   const [followingcount, setfollowing] = useState([]);
-  // const [showfollow, setShowfollow] = useState(state?!state.updatedUser.followers.includes(userid):false);
-    const [showfollow, setShowfollow] = useState(true);
   const { state, dispatch } = useContext(UserContext);
+  // const [showfollow, setShowfollow] = useState(
+  //   state ? !state.updatedUser.followers.includes(userid) : false
+  // );
+  const [showfollow, setShowfollow] = useState(false);
+  const [profilepic, setProfilePic] = useState("");
   const [loading, setLoading] = useState(true);
   const { userid } = useParams();
   // console.log(userid);
@@ -54,8 +57,10 @@ export default function Profile() {
       .then((res) => res.json())
       .then((result) => {
         setProfile(result);
+        console.log(result);
         console.log(userProfile);
         setMyPosts(result.posts);
+        setProfilePic(result.user.pic);
         settotalPosts(result.posts.length);
         setUsername(result.user.name);
         setfollowers(result.user.followers.length);
@@ -162,7 +167,7 @@ export default function Profile() {
                     <div className="flex flex-col items-center justify-evenly sm:flex-row sm:items-start">
                       <div className="mb-4 sm:mb-0">
                         <Avatar
-                          src={state ? state.pic : ""}
+                          src={profilepic}
                           className="w-40 h-40 text-large"
                         />
                       </div>
