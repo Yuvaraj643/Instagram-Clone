@@ -1,5 +1,7 @@
 <div align='center'>
 
+<img src=https://i.ibb.co/FzDYK7Z/Screenshot-from-2024-05-23-16-14-38.png alt="logo" width=1600 height=834 />
+
 <h1>Instagram Clone made with React</h1>
 <p>Sure, here's an example GitHub README for an Instagram clone with React that includes authentication, profiles, image upload, and logout functionality: Instagram Clone with React This is a social media application built with React that includes features such as user authentication, profiles, image upload, and logout functionality.</p>
 
@@ -17,9 +19,19 @@
 
 
 ## :star2: About the Project
+
+### :camera: Screenshots
+<div align="center"> <a href="https://instagram-clone-self.vercel.app/"><img src="https://i.ibb.co/DrKGFD3/Screenshot-from-2024-05-23-16-11-44.png" alt='image' width='800'/></a> </div>
+<div align="center"> <a href="https://instagram-clone-self.vercel.app/"><img src="https://i.ibb.co/9gywHT3/Screenshot-from-2024-05-23-16-11-53.png" alt='image' width='800'/></a> </div>
+<div align="center"> <a href="https://instagram-clone-self.vercel.app/"><img src="https://i.ibb.co/JQpmctX/Screenshot-from-2024-05-23-16-13-55.png" alt='image' width='800'/></a> </div>
+<div align="center"> <a href="https://instagram-clone-self.vercel.app/"><img src="https://i.ibb.co/8b3ghdz/Screenshot-from-2024-05-23-16-13-33.png" alt='image' width='800'/></a> </div>
+<div align="center"> <a href="https://instagram-clone-self.vercel.app/"><img src="https://i.ibb.co/1r4XKDv/Screenshot-from-2024-05-23-16-14-08.png" alt='image' width='800'/></a> </div>
+
+
 ### :space_invader: Tech Stack
 <details> <summary>Client</summary> <ul>
 <li><a href="https://react.dev/">React js</a></li>
+<li><a href="https://nextui.org/">Next-UI</a></li>
 </ul> </details>
 <details> <summary>Server</summary> <ul>
 <li><a href="https://nodejs.org/en">Node js</a></li>
@@ -34,6 +46,7 @@
 - Image upload functionality for users to share their photos with the community
 - Commenting system for users to add comments to other users' posts
 - Liking and unliking of posts
+- Dark and Light Mode added
 
 
 ## :toolbox: Getting Started
