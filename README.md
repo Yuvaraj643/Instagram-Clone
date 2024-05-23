@@ -107,6 +107,4 @@ Project Link: [https://github.com/Yuvaraj643/Instagram-Clone](https://github.com
 
 ## :gem: Acknowledgements
 
-Use this section to mention useful resources and libraries that you have used in your projects.
-
 - [Next-UI](https://nextui.org/)
