@@ -1,70 +1,99 @@
-# Getting Started with Create React App
+<div align='center'>
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<h1>Instagram Clone made with React</h1>
+<p>Sure, here's an example GitHub README for an Instagram clone with React that includes authentication, profiles, image upload, and logout functionality: Instagram Clone with React This is a social media application built with React that includes features such as user authentication, profiles, image upload, and logout functionality.</p>
 
-## Available Scripts
+<h4> <a href=https://instagram-clone-self.vercel.app/>View Demo</a> <span> · </span> <a href="https://github.com/Yuvaraj643/Instagram-Clone/blob/master/README.md"> Documentation </a> <span> · </span> <a href="https://github.com/Yuvaraj643/Instagram-Clone/issues"> Report Bug </a> <span> · </span> <a href="https://github.com/Yuvaraj643/Instagram-Clone/issues"> Request Feature </a> </h4>
 
-In the project directory, you can run:
 
-### `npm start`
+</div>
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+# :notebook_with_decorative_cover: Table of Contents
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+- [About the Project](#star2-about-the-project)
+- [Roadmap](#compass-roadmap)
+- [Contact](#handshake-contact)
+- [Acknowledgements](#gem-acknowledgements)
 
-### `npm test`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## :star2: About the Project
+### :space_invader: Tech Stack
+<details> <summary>Client</summary> <ul>
+<li><a href="https://react.dev/">React js</a></li>
+</ul> </details>
+<details> <summary>Server</summary> <ul>
+<li><a href="https://nodejs.org/en">Node js</a></li>
+</ul> </details>
+<details> <summary>Database</summary> <ul>
+<li><a href="https://www.mongodb.com/">MongoDB</a></li>
+</ul> </details>
 
-### `npm run build`
+### :dart: Features
+- User authentication system with sign up, log in, and log out functionality
+- User profiles with the ability to view and interact with other user profiles
+- Image upload functionality for users to share their photos with the community
+- Commenting system for users to add comments to other users' posts
+- Liking and unliking of posts
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## :toolbox: Getting Started
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### :bangbang: Prerequisites
 
-### `npm run eject`
+- Install Node js in your computer<a href="https://nodejs.org/en"> Here</a>
+- Learn Basics of Javascript<a href="https://www.w3schools.com/js/"> Here</a>
+- Learn React js Hooks <a href="https://react.dev/"> Here</a>
+- Learn Node js<a href="https://www.w3schools.com/nodejs/"> Here</a>
+- Learn MongoDB<a href="https://www.w3schools.com/mongodb/"> Here</a>
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### :gear: Installation
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+This project uses npm as package manager
+```bash
+npm install
+```
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
 
-## Learn More
+### :running: Run Locally
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+Clone the project
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+```bash
+https://github.com/Yuvaraj643/Instagram-Clone
+```
+Compile and Minify for Production
+```bash
+npm start
+```
 
-### Code Splitting
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+### :triangular_flag_on_post: Deployment
 
-### Analyzing the Bundle Size
+Compile and Hot-Reload for Development
+```bash
+npm run build
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
 
-### Making a Progressive Web App
+## :compass: Roadmap
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+* [x] JS
+* [x] Node js
+* [x] Express js
+* [x] MongoDB
+* [x] API Testing
+* [x] React JS
 
-### Advanced Configuration
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+## :handshake: Contact
 
-### Deployment
+Yuvaraj - [@twitter_handle](https://x.com/YuvarajNani7675) - vyuvarajnani2001@gmail.com
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+Project Link: [https://github.com/Yuvaraj643/Instagram-Clone](https://github.com/Yuvaraj643/Instagram-Clone)
 
-### `npm run build` fails to minify
+## :gem: Acknowledgements
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Use this section to mention useful resources and libraries that you have used in your projects.
+
+- [Next-UI](https://nextui.org/)
