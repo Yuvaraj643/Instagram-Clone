@@ -178,7 +178,7 @@ export default function Topbar() {
             <Link
               to={state ? "/" : `${API_URL}/login`}
             >
-              <p className="logo-title  text-foreground bg-background text-2xl font-bold">
+              <p className="logo-title text-foreground bg-background text-xl font-bold ">
                 Instagram
               </p>
             </Link>
