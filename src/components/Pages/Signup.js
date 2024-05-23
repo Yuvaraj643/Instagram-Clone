@@ -55,6 +55,7 @@ export default function Signup() {
       setLoading(false);
   };
   const uploadFields =()=>{
+    toast.warning("Please Wait while we create your account");
     if (
       !/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(
         email
