@@ -1,6 +1,6 @@
 <div align='center'>
 
-<img src=https://i.ibb.co/FzDYK7Z/Screenshot-from-2024-05-23-16-14-38.png alt="logo" width=2000 height=800 />
+<img src=https://i.ibb.co/FzDYK7Z/Screenshot-from-2024-05-23-16-14-38.png alt="logo" width=800 />
 
 <h1>Instagram Clone made with React</h1>
 <p>Sure, here's an example GitHub README for an Instagram clone with React that includes authentication, profiles, image upload, and logout functionality: Instagram Clone with React This is a social media application built with React that includes features such as user authentication, profiles, image upload, and logout functionality.</p>
