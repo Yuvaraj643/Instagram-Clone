@@ -162,7 +162,7 @@ export default function Profile() {
           />
           <div className="h-full">
             <>
-              <section className="w-1/2 mx-auto my-4">
+              <section className="lg:w-1/2 mx-auto my-4 sm:w-full">
                 <div className="flex flex-col items-center justify-evenly sm:flex-row sm:items-start">
                   <div className="mb-4 sm:mb-0">
                     <Avatar src={profilepic} className="w-40 h-40 text-large" />
@@ -215,8 +215,8 @@ export default function Profile() {
                   </div>
                 </div>
                 <hr></hr>
-                <section className="lg:w-full lg:flex-row lg:justify-center py-10">
-                  <div className="max-w-[900px] gap-2 grid grid-cols-12 grid-rows-2 px-8 mx-auto">
+                <section className="lg:w-full lg:flex-row lg:justify-center py-10 sm:w-full ">
+                  <div className="lg:w-full  gap-2 grid grid-cols-8 grid-rows-2 justify-items-center" >
                     {myposts.map((item) => {
                       console.log(item.photo);
                       return <UserPosts image={item.photo} key={item._id} />;
