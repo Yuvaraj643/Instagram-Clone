@@ -23,7 +23,7 @@
 ### :camera: Screenshots
 <div align="center"> <a href="https://instagram-clone-self.vercel.app/"><img src="https://i.ibb.co/DrKGFD3/Screenshot-from-2024-05-23-16-11-44.png" alt='image' width='800'/></a> </div>
 <div align="center"> <a href="https://instagram-clone-self.vercel.app/"><img src="https://i.ibb.co/9gywHT3/Screenshot-from-2024-05-23-16-11-53.png" alt='image' width='800'/></a> </div>
-<div align="center"> <a href="https://instagram-clone-self.vercel.app/"><img src="https://i.ibb.co/JQpmctX/Screenshot-from-2024-05-23-16-13-55.png" alt='image' width='800'/></a> </div>
+<div align="center"> <a href="https://instagram-clone-self.vercel.app/"><img src="https://i.ibb.co/2K7JMJG/Screenshot-from-2024-05-23-16-22-20.png" alt='image' width='800'/></a> </div>
 <div align="center"> <a href="https://instagram-clone-self.vercel.app/"><img src="https://i.ibb.co/8b3ghdz/Screenshot-from-2024-05-23-16-13-33.png" alt='image' width='800'/></a> </div>
 <div align="center"> <a href="https://instagram-clone-self.vercel.app/"><img src="https://i.ibb.co/1r4XKDv/Screenshot-from-2024-05-23-16-14-08.png" alt='image' width='800'/></a> </div>
 
